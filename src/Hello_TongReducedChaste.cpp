@@ -33,22 +33,20 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef HELLO_HPP_
-#define HELLO_HPP_
+#include "Hello_TongReducedChaste.hpp"
+#include "Exception.hpp"
 
-#include <string>
-
-class Hello
+Hello_TongReducedChaste::Hello_TongReducedChaste(const std::string& rMessage)
+    : mMessage(rMessage)
 {
-private:
-    std::string mMessage;
+}
 
-public:
-    Hello(const std::string& rMessage);
+std::string Hello_TongReducedChaste::GetMessage()
+{
+    return mMessage;
+}
 
-    std::string GetMessage();
-
-    void Complain(const std::string& rComplaint);
-};
-
-#endif /*HELLO_HPP_*/
+void Hello_TongReducedChaste::Complain(const std::string& rComplaint)
+{
+    EXCEPTION(rComplaint);
+}
