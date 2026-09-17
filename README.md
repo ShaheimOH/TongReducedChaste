@@ -2,9 +2,17 @@
 
 Chaste-based simulation of the reduced Tong uterine smooth muscle cell model, with Python utilities for modifying ion-channel conductances and plotting membrane voltage.
 
+Link to reduced model paper: https://doi.org/10.1371/journal.pcbi.1011359
+
+Link to original model paper: https://doi.org/10.1371/journal.pone.0018685
+
+Link to Chaste software paper: https://joss.theoj.org/papers/10.21105/joss.01848
+
+This was a project completed during the Chaste Oxford Hackathon 2026. 
+
 ## Features
 
-- Run the Tong CellML model through Chaste
+- Run the Tong CellML model through Chaste (one action potential simulation)
 - Change selected conductances by percentage
 - Restore the original CellML model after simulation
 - Load and plot membrane-voltage traces
