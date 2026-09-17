@@ -1,5 +1,7 @@
 # TongReducedChaste
 
+<img width="896" height="346" alt="image" src="https://github.com/user-attachments/assets/45825b03-10ff-480d-a69b-d2266219ec77" />
+
 Chaste-based simulation of the reduced Tong uterine smooth muscle cell model, with Python utilities for modifying ion-channel conductances and plotting membrane voltage.
 
 Link to reduced model paper: https://doi.org/10.1371/journal.pcbi.1011359
