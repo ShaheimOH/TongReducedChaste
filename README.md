@@ -10,6 +10,8 @@ Link to Chaste software paper: https://joss.theoj.org/papers/10.21105/joss.01848
 
 This was a project completed during the Chaste Oxford Hackathon 2026. 
 
+** Note ** We used Chaste via Docker (implementation details here: https://github.com/Chaste/chaste-docker).
+
 ## Features
 
 - Run the Tong CellML model through Chaste (one action potential simulation)
