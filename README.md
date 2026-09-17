@@ -1,9 +1,117 @@
-# A template user project for use with Chaste.
+# TongReducedChaste
 
-You now simply log in to github, then click the big green "Use this template" button to use a copy of this repository as the basis of your own new repository under your github username/organisation (this 'template' status avoids complications with forks all being linked back to this repo).
+Chaste-based simulation of the reduced Tong uterine smooth muscle cell model, with Python utilities for modifying ion-channel conductances and plotting membrane voltage.
 
-Alternatively, if you aren't a github user, you can download a zip (see Releases button) and start your own repository with that.
+## Features
 
-Then see the [User Projects](https://chaste.github.io/docs/user-guides/user-projects/) guide page on the Chaste website for more information.
+- Run the Tong CellML model through Chaste
+- Change selected conductances by percentage
+- Restore the original CellML model after simulation
+- Load and plot membrane-voltage traces
 
-If you clone this repository, you should make sure to rename the template_project folder with your project name and run the 'setup_project.py' script to avoid conflicts if you have multiple projects.
+## Structure
+
+```text
+TongReducedChaste/
+├── apps/src/TongCellML.cpp
+├── cellml/
+│   ├── Tong_Reduced.cellml
+│   └── Tong_Reduced_original.cellml
+├── functions.py
+└── README.md
+```
+
+## Build
+
+Inside the Chaste Docker container:
+
+```bash
+cd /home/chaste/build
+cmake /home/chaste/src
+make -j4 TongCellML
+```
+
+Executable:
+
+```text
+/home/chaste/build/projects/TongReducedChaste/apps/TongCellML
+```
+
+## Python environment
+
+```bash
+cd /home/chaste/src/projects/TongReducedChaste
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install numpy matplotlib
+```
+
+## Run a simulation
+
+```python
+from functions import stimulate_tong_cell
+
+vm, time = stimulate_tong_cell(
+    start_time=0,
+    end_time=4000,
+    sampling_timestep=1,
+)
+```
+
+## Change conductances
+
+```python
+from functions import change_tong_conductances
+
+percentage_changes = {
+    "gna": -10,
+    "gcal": -50,
+    "gcat": 0,
+    "gkca": 20,
+    "gb": 0,
+    "gk1": -15,
+    "gcl": 0,
+    "gns": 10,
+}
+
+change_tong_conductances(percentage_changes)
+```
+
+`-50` means a 50% reduction, while `20` means a 20% increase.
+
+## Restore the original model
+
+```python
+from functions import revert_changes
+
+revert_changes()
+```
+
+This restores `Tong_Reduced.cellml` from `Tong_Reduced_original.cellml`.
+
+## Recommended workflow
+
+```python
+from functions import (
+    stimulate_tong_cell,
+    change_tong_conductances,
+    revert_changes,
+)
+
+percentage_changes = {
+    "gcal": -50,
+    "gkca": 20,
+}
+
+try:
+    change_tong_conductances(percentage_changes)
+    vm, time = stimulate_tong_cell(0, 4000, 1)
+finally:
+    revert_changes()
+```
+
+## Notes
+
+- Keep `Tong_Reduced_original.cellml` unchanged.
+- `Tong_Reduced.cellml` is the working model used by Chaste.
+- Conductance editing currently depends on fixed line locations in the CellML file.
