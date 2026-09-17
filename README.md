@@ -2,7 +2,7 @@
 
 <img width="896" height="346" alt="image" src="https://github.com/user-attachments/assets/45825b03-10ff-480d-a69b-d2266219ec77" />
 
-Chaste-based simulation of the reduced Tong uterine smooth muscle cell model, with Python utilities for modifying ion-channel conductances and plotting membrane voltage. Image shown is a replication of this study via the reduced model: https://www.physoc.org/abstracts/mathematical-modelling-of-electrical-action-potentials-in-a-uterine-smooth-muscle-cell/
+Chaste-based simulation of the reduced Tong uterine smooth muscle cell model, with Python utilities for modifying ion-channel conductances and plotting membrane voltage. Image shown is a replication of this study via the reduced model: https://www.physoc.org/abstracts/mathematical-modelling-of-electrical-action-potentials-in-a-uterine-smooth-muscle-cell/ (slight differences due to exact parameter changes not presented for oestradiol in paper)
 
 Link to reduced model paper: https://doi.org/10.1371/journal.pcbi.1011359
 
