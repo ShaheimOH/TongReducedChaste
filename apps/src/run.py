@@ -8,18 +8,18 @@ from pathlib import Path
 import re
 from functions import stimulate_tong_cell, change_tong_conductances, revert_changes
 
-# changing conductances example
+# changing conductances example (Oestradiol)
 
-percentage_changes =     {
-        "gna": -10,
-        "gcal": -50,
-        "gcat": 0,
-        "gkca": 20,
-        "gb": 0,
-        "gk1": -15,
-        "gcl": 0,
-        "gns": 10,
-    }
+percentage_changes = {
+    "gna": 0,
+    "gcal": -80,   # Oestradiol: gCaL × 0.2
+    "gcat": 0,
+    "gkca": -10,   # Oestradiol: gK(Ca) × 0.9
+    "gb": 0,
+    "gk1": -40,    # Oestradiol: gK1 × 0.6
+    "gcl": 0,
+    "gns": 0,
+}
 
 change_tong_conductances(percentage_changes)
 
